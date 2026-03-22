@@ -2,8 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 const API_URL = "https://api.bookingmood.com/v1";
 
+
 export async function POST(request: NextRequest) {
   const { member_email, member_name } = await request.json();
+
+    // Temporary debug — remove after confirming
+    console.log('ENV CHECK:', {
+      hasBookingMoodApiKey: !!process.env.BOOKINGMOOD_API_KEY,
+      hasBookingMoodOrganizationId: !!process.env.BOOKINGMOOD_ORGANIZATION_ID,
+    });
 
   const member = await fetch(`${API_URL}/invite-member`, {
     method: "POST",
