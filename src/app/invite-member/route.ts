@@ -44,8 +44,22 @@ export async function POST(request: NextRequest) {
         interaction: "book",
         organization_id: process.env.BOOKINGMOOD_ORGANIZATION_ID,
         settings: {
-          available_color: "#22c55e",
-          background_color: "#fff",
+          // ✅ Fixed color field names (was the crash cause)
+          color_available: "#22c55e",
+          color_surface: "#fff",
+          color_tentative: "#fcd34d",
+          color_text: "#000",
+          color_unavailable: "#faa5a5",
+
+          // ✅ Required color fields that were missing
+          color_booked: "#faa5a5",
+          color_closed: "#e5e7eb",
+          color_error: "#ef4444",
+          color_info: "#3b82f6",
+          color_primary: "#3b82f6",
+          color_warning: "#f59e0b",
+
+          // ✅ These were already correct
           display_legend: true,
           display_product_images: false,
           display_product_name: false,
@@ -58,10 +72,7 @@ export async function POST(request: NextRequest) {
           show_totals: false,
           show_yearly: false,
           size: "regular",
-          tentative_color: "#fcd34d",
-          text_color: "#000",
           theme: "modern",
-          unavailable_color: "#faa5a5",
           week_starts_on: null,
         },
         show_bookingmood_branding: false,
