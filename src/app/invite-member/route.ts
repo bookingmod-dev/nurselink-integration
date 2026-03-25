@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
         },
         show_bookingmood_branding: false,
         show_past: false,
-        show_tentative_as: "TENTATIVE",
+        // show_tentative_as: "TENTATIVE",
         title: `calendar ${member_name}`,
         type: "calendar",
       },
