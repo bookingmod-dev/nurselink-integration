@@ -10,16 +10,20 @@ export async function POST(request: NextRequest) {
   const member = await fetch(`${API_URL}/members`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
-    body: JSON.stringify({ email: member_email, name: member_name }),
+    body: JSON.stringify({ "email": member_email, "name": member_name }),
   }).then((res) => res.json());
+
+  console.log("member", member);
+  console.log("member.id", member.id);
+  console.log("member.name", member.name);
 
   const product = await fetch(`${API_URL}/products`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
     body: JSON.stringify({
-      name: { default: member_name },
-      rent_period: "daily",
-      timezone: "Pacific/Auckland",
+      "name": { "default": member_name },
+      "rent_period": "daily",
+      "timezone": "Pacific/Auckland",
     }),
   }).then((res) => res.json());
 
