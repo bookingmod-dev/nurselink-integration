@@ -6,25 +6,20 @@ const API_URL = "https://api.bookingmood.com/v1";
 export async function POST(request: NextRequest) {
   const { member_email, member_name } = await request.json();
 
-    // Temporary debug — remove after confirming
-    console.log('ENV CHECK:', {
-      hasBookingMoodApiKey: !!process.env.BOOKINGMOOD_API_KEY,
-      hasBookingMoodOrganizationId: !!process.env.BOOKINGMOOD_ORGANIZATION_ID,
-    });
 
   const member = await fetch(`${API_URL}/members`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
-    body: JSON.stringify({ email: member_email, name: member_name }),
+    body: JSON.stringify({ "email": member_email, "name": member_name }),
   }).then((res) => res.json());
 
   const product = await fetch(`${API_URL}/products`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
     body: JSON.stringify({
-      name: { default: member_name },
-      rent_period: "daily",
-      timezone: "Pacific/Auckland",
+      "name": { "default": member_name },
+      "rent_period": "daily",
+      "timezone": "Pacific/Auckland",
     }),
   }).then((res) => res.json());
 
