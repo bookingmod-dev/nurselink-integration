@@ -7,13 +7,13 @@ export async function POST(request: NextRequest) {
   const { member_email, member_name } = await request.json();
 
 
-  const member = await fetch(`${API_URL}/invite-member`, {
+  const member = await fetch(`${API_URL}/members`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
     body: JSON.stringify({ email: member_email, name: member_name }),
   }).then((res) => res.json());
 
-  const product = await fetch(`${API_URL}/create-product`, {
+  const product = await fetch(`${API_URL}/products`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
     body: JSON.stringify({
