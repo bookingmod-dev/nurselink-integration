@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     body: JSON.stringify({ email: member_email, name: member_name }),
   }).then((res) => res.json());
 
-  const product = await fetch(`${API_URL}/create-product`, {
+  const product = await fetch(`${API_URL}/products`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
     body: JSON.stringify({
