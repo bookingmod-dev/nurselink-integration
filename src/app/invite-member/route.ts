@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       hasBookingMoodOrganizationId: !!process.env.BOOKINGMOOD_ORGANIZATION_ID,
     });
 
-  const member = await fetch(`${API_URL}/invite-member`, {
+  const member = await fetch(`${API_URL}/members`, {
     method: "POST",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
     body: JSON.stringify({ email: member_email, name: member_name }),
