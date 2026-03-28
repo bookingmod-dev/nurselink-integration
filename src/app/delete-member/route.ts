@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
   });
 
-  await fetch(`${API_URL}/products`, {
+  await fetch(`${API_URL}/products?id=${product_id}`, {
     method: "DELETE",
     headers: { Authorization: `Bearer ${process.env.BOOKINGMOOD_API_KEY}` },
   });
